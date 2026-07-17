@@ -1,13 +1,21 @@
 # imports
 import json
+import subprocess
+import os
 from scraper import update_database
 
 # variables
-version = 0.1
+version = 0.2
 versiondate = "07/17/26"
+database = "database.json"
 
+def clear_screen():
+    # 'nt' means Windows, 'posix' is Mac/Linux
+    subprocess.run('cls' if os.name == 'nt' else 'clear')
 
 while True:
+    clear_screen()
+
     # ooohhhh ascii title so tuff
     print("""
  ██████╗██████╗  ██████╗ ███████╗      ███████╗███████╗████████╗ ██████╗██╗  ██╗
@@ -20,6 +28,10 @@ while True:
     print(f"v{version} | {versiondate}")
     print("Developed by w1nter1226 on GitHub")
     print("https://github.com/w1nter1226/cros-fetch")
+    if not os.path.exists(database):
+        print()
+        print("database.json not found! :[")
+        print("Please update the database before downloading shims/reco images")
     print()
 
 
@@ -38,10 +50,12 @@ while True:
     if choice == "1":
         print("wip!! sorry :(")
         print()
+        input("\nPress Enter to continue")
 
     elif choice == "2":
         print("wip!! sorry :(")
         print()
+        input("\nPress Enter to continue")
 
     elif choice == "U":
         print("Starting Database update...")
@@ -50,11 +64,13 @@ while True:
         print()
         print("Database updated successfully!")
         print()
+        input("\nPress Enter to continue")
     
     elif choice == "C":
         print("tuff credits")
         print("created by me")
         print()
+        input("\nPress Enter to continue")
 
     elif choice == "E":
         print("Toodles :D")

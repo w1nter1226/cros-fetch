@@ -3,7 +3,7 @@ A chromeOS tool to make writing recovery USBs and RMA shims easier than ever
 
 ## How to use
 
-> When you first use cros-fetch, update the database first!
+> When you first use cros-fetch, update the database first before downloading any shims/reco images!
 
 Windows:
 ```powershell

@@ -119,6 +119,14 @@ def main():
         print(e)
 
     try:
+        db["cr3nroll-shim"] = github_release(
+            "CrOSmium/cr3nroll-shim",
+            "tags/Prebuilts"
+        )
+    except Exception as e:
+        print(e)
+
+    try:
         db["recovery_images"] = recovery_images()
     except Exception as e:
         print(e)
@@ -149,6 +157,14 @@ def update_database():
         db["badsh1mmer"] = github_release(
             "crosbreaker/badsh1mmer",
             "latest"
+        )
+    except Exception as e:
+        print(e)
+
+    try:
+        db["cr3nroll-shim"] = github_release(
+            "CrOSmium/cr3nroll-shim",
+            "tags/Prebuilts"
         )
     except Exception as e:
         print(e)
