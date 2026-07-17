@@ -1,6 +1,10 @@
 # cros-fetch
 A tool to make writing recovery USBs and RMA shims for Chromebooks easier than ever
 
+<img src="cros-fetch in term.png" alt="cros-fetch running in a terminal!" width="700">
+
+> ^ cros-fetch running in a terminal! ^
+
 ## How to use
 
 > When you first use cros-fetch, update the database first before downloading any shims/reco images!
