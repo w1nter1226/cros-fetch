@@ -1,23 +1,43 @@
-# imports
 import json
-import subprocess
 import os
-from scraper import update_database
+import subprocess
+import shutil
 
-# variables
-version = 0.2
-versiondate = "07/17/26"
-database = "database.json"
+from scraper import update_database
+from menus import recovery_menu, shim_menu
+
+VERSION = "0.5"
+VERSION_DATE = "07/17/26"
+DATABASE = "database.json"
+
 
 def clear_screen():
-    # 'nt' means Windows, 'posix' is Mac/Linux
-    subprocess.run('cls' if os.name == 'nt' else 'clear')
+    subprocess.run(
+        "cls" if os.name == "nt" else "clear",
+        shell=True
+    )
 
-while True:
+
+def load_database():
+    if not os.path.exists(DATABASE):
+        return None
+
+    with open(DATABASE, "r", encoding="utf-8") as f:
+        return json.load(f)
+    
+def delete_downloads():
+    folder = "downloads"
+    
+    if os.path.exists(folder):
+        shutil.rmtree(folder)
+    else:
+        print("Downloads folder not found?")
+
+
+def header():
     clear_screen()
 
-    # ooohhhh ascii title so tuff
-    print("""
+    print(r"""
  ██████╗██████╗  ██████╗ ███████╗      ███████╗███████╗████████╗ ██████╗██╗  ██╗
 ██╔════╝██╔══██╗██╔═══██╗██╔════╝      ██╔════╝██╔════╝╚══██╔══╝██╔════╝██║  ██║
 ██║     ██████╔╝██║   ██║███████╗█████╗█████╗  █████╗     ██║   ██║     ███████║
@@ -25,57 +45,90 @@ while True:
 ╚██████╗██║  ██║╚██████╔╝███████║      ██║     ███████╗   ██║   ╚██████╗██║  ██║
  ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝      ╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
 """)
-    print(f"v{version} | {versiondate}")
+
+    print(f"v{VERSION} | {VERSION_DATE}")
     print("Developed by w1nter1226 on GitHub")
     print("https://github.com/w1nter1226/cros-fetch")
-    if not os.path.exists(database):
-        print()
-        print("database.json not found! :[")
-        print("Please update the database before downloading shims/reco images")
     print()
 
+    if not os.path.exists(DATABASE):
+        print("database.json not found!")
+        print("Please update the database before downloading.")
+        print()
 
-    # custom tui because i dont wanna learn textual
+
+def pause():
+    input("\nPress Enter to continue...")
+
+
+while True:
+    header()
+
     print("--- Main Menu ---")
     print("1. Recovery Images")
     print("2. Shims")
     print("U. Update Database")
+    print("D. Delete Downloads")
     print("C. Credits")
     print("E. Exit")
     print()
 
     choice = input("> ").strip().upper()
-    print()
 
     if choice == "1":
-        print("wip!! sorry :(")
-        print()
-        input("\nPress Enter to continue")
+
+        db = load_database()
+
+        if db is None:
+            print("\nDatabase not found.")
+            pause()
+            continue
+
+        recovery_menu(db)
 
     elif choice == "2":
-        print("wip!! sorry :(")
-        print()
-        input("\nPress Enter to continue")
+
+        db = load_database()
+
+        if db is None:
+            print("\nDatabase not found.")
+            pause()
+            continue
+
+        shim_menu(db)
 
     elif choice == "U":
-        print("Starting Database update...")
-        print()
+
+        print("\nUpdating database...\n")
         update_database()
-        print()
-        print("Database updated successfully!")
-        print()
-        input("\nPress Enter to continue")
-    
+
+        print("\nDatabase updated successfully!")
+        pause()
+
+    elif choice == "D":
+
+        print("\nDeleting downloaded reco images and shims...")
+        delete_downloads()
+        pause()
+
     elif choice == "C":
-        print("tuff credits")
-        print("created by me")
-        print()
-        input("\nPress Enter to continue")
+
+        print("\nCredits")
+        print("-------")
+        print("Developed by w1nter1226")
+        print("Recovery images from Google")
+        print("RMA shims from dl.cros.download")
+        print("SH1mmer & Badsh1mmer from Crosbreaker")
+        print("Cr3nroll from CrOSmium")
+
+        pause()
 
     elif choice == "E":
-        print("Toodles :D")
-        print()
+
+        print("\nGoodbye!")
         break
 
     else:
-        print(f"'{choice}' is not a valid option!")
+
+        print(f"\n'{choice}' is not a valid option.")
+        pause()
