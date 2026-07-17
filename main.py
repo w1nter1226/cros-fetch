@@ -36,11 +36,11 @@ while True:
     print()
 
     if choice == "1":
-        print("wip")
+        print("wip!! sorry :(")
         print()
 
     elif choice == "2":
-        print("wip")
+        print("wip!! sorry :(")
         print()
 
     elif choice == "U":
