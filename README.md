@@ -1,5 +1,5 @@
 # cros-fetch
-> A chromeOS tool to make writing recovery USBs and RMA shims easier than ever
+A chromeOS tool to make writing recovery USBs and RMA shims easier than ever
 
 ## How to use
 
