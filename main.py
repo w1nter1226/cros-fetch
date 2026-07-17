@@ -1,77 +1,61 @@
-import sys
-import importlib
+# imports
+import json
+from scraper import update_database
 
-name = "cros-fetch"
-version = "0.0"
-branch = "main"
-testmissingdep = False
+# variables
+version = 0.1
+versiondate = "07/17/26"
 
-required_dependencies = [
-    ("textual", "textual"),
-    ("rich", "rich"),
-]
+# ooohhhh ascii title so tuff
+print("""
+ ██████╗██████╗  ██████╗ ███████╗      ███████╗███████╗████████╗ ██████╗██╗  ██╗
+██╔════╝██╔══██╗██╔═══██╗██╔════╝      ██╔════╝██╔════╝╚══██╔══╝██╔════╝██║  ██║
+██║     ██████╔╝██║   ██║███████╗█████╗█████╗  █████╗     ██║   ██║     ███████║
+██║     ██╔══██╗██║   ██║╚════██║╚════╝██╔══╝  ██╔══╝     ██║   ██║     ██╔══██║
+╚██████╗██║  ██║╚██████╔╝███████║      ██║     ███████╗   ██║   ╚██████╗██║  ██║
+ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝      ╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
+""")
+print(f"v{version} | {versiondate}")
+print()
 
-# injects dependency that doesnt exist
-if testmissingdep:
-    required_dependencies.append(("hyperspeed_booster", "hyper-speed-booster"))
+while True:
+    # custom tui because i dont wanna learn textual
+    print("--- Main Menu ---")
+    print("1. Recovery Images")
+    print("2. Shims")
+    print("U. Update Database")
+    print("C. Credits")
+    print("E. Exit")
+    print()
 
-# cool dependency checker that took me too long
-def check_dependencies() -> bool:
-    """checks for missing dependencies"""
+    choice = input("> ").strip().upper()
+    print()
 
-    missing_packages = []
+    if choice == "1":
+        print("wip")
+        print()
 
-    for import_name, install_name in required_dependencies:
-        try:
-            importlib.import_module(import_name)
-        except ImportError:
-            missing_packages.append(install_name)
+    elif choice == "2":
+        print("wip")
+        print()
 
-    if missing_packages:
-        print("Missing required dependencies :[")
-        print("The following packages need to be installed before running:")
-        for pkg in missing_packages:
-            print(f"  {pkg}")
-        print("\nYou can install them using:")
-        print(f"  pip install {' '.join(missing_packages)}")
-        print("\nOr if your on macOS/linux:")
-        print(f"  pip3 install {' '.join(missing_packages)}")
-        return False
-
-    return True
-
-if not check_dependencies():
-    sys.exit(1)
-
-# textual
-from textual.app import App, ComposeResult
-from textual.widgets import Header, Footer, Static
-
-class crosfetch(App):
-    """larp larp larp sahur"""
+    elif choice == "U":
+        print("Starting Database update...")
+        print()
+        update_database()
+        print()
+        print("Database updated successfully!")
+        print()
     
-    CSS = """
-    Screen {
-        align: center middle;
-    }
-    #message {
-        width: 60;
-        height: auto;
-        border: solid green;
-        background: $surface;
-        content-align: center middle;
-        padding: 1 2;
-    }
-    """
+    elif choice == "C":
+        print("tuff credits")
+        print("created by me")
+        print()
 
-    def compose(self) -> ComposeResult:
-        yield Header()
-        yield Static(
-            "welcome to cros-fetch blud 😂🫱🫱", 
-            id="message"
-        )
-        yield Footer()
+    elif choice == "E":
+        print("Toodles :D")
+        print()
+        break
 
-if __name__ == "__main__":
-    app = crosfetch()
-    app.run()
+    else:
+        print(f"'{choice}' is not a valid option!")
