@@ -29,4 +29,4 @@ python3 main.py
 
 cros-fetch is an independent project and is not affiliated with Google LLC. 
 
-This tool is intended for legitimate hardware recovery and authorized RMA tasks.
+While cros-fetch provides utilities known for enrollment escapes, This tool is intended **only** for legitimate hardware recovery and authorized RMA tasks.
