@@ -68,6 +68,7 @@ while True:
     print("1. Recovery Images")
     print("2. Shims")
     print("U. Update Database")
+    print("F. Flash USB")
     print("D. Delete Downloads")
     print("C. Credits")
     print("E. Exit")
@@ -104,6 +105,10 @@ while True:
 
         print("\nDatabase updated successfully!")
         pause()
+
+    elif choice == "F":
+
+        print("WIP!!!")
 
     elif choice == "D":
 
