@@ -1,4 +1,5 @@
 import os
+import zipfile
 import requests
 
 from rich.progress import (
@@ -38,3 +39,13 @@ def download_file(url, filename):
                     progress.update(task, advance=len(chunk))
 
     print(f"\nDownload complete! Saved to {filepath}")
+
+    if filename.endswith(".zip"):
+        extract_to = "downloads/extracted"
+        print(f"Extracting {filename}...")
+        os.makedirs(extract_to, exist_ok=True)
+        
+        with zipfile.ZipFile(filepath, 'r') as zip_ref:
+            zip_ref.extractall(extract_to)
+            
+        print(f"Extraction complete! Saved to {extract_to}")
