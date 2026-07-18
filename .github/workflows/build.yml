@@ -1,11 +1,7 @@
 name: Compile Win exe
 
 on:
-  push:
-    branches: [ "main", "master" ]
-  pull_request:
-    branches: [ "main", "master" ]
-  workflow_dispatch: # manual for right now since i want to make sure this works
+  workflow_dispatch: # dammit github i said manual not every commit
 
 jobs:
   build:
