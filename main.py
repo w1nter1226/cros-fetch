@@ -38,17 +38,18 @@ def header():
     clear_screen()
 
     print(r"""
- ██████╗██████╗  ██████╗ ███████╗      ███████╗███████╗████████╗ ██████╗██╗  ██╗
-██╔════╝██╔══██╗██╔═══██╗██╔════╝      ██╔════╝██╔════╝╚══██╔══╝██╔════╝██║  ██║
-██║     ██████╔╝██║   ██║███████╗█████╗█████╗  █████╗     ██║   ██║     ███████║
-██║     ██╔══██╗██║   ██║╚════██║╚════╝██╔══╝  ██╔══╝     ██║   ██║     ██╔══██║
-╚██████╗██║  ██║╚██████╔╝███████║      ██║     ███████╗   ██║   ╚██████╗██║  ██║
- ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝      ╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
+ ██████╗ ██████╗   ██████╗  ███████╗        ███████╗ ███████╗ ████████╗  ██████╗ ██╗  ██╗
+██╔════╝ ██╔══██╗ ██╔═══██╗ ██╔════╝        ██╔════╝ ██╔════╝ ╚══██╔══╝ ██╔════╝ ██║  ██║
+██║      ██████╔╝ ██║   ██║ ███████╗ █████╗ █████╗   █████╗      ██║    ██║      ███████║
+██║      ██╔══██╗ ██║   ██║ ╚════██║ ╚════╝ ██╔══╝   ██╔══╝      ██║    ██║      ██╔══██║
+╚██████╗ ██║  ██║ ╚██████╔╝ ███████║        ██║      ███████╗    ██║    ╚██████╗ ██║  ██║
+ ╚═════╝ ╚═╝  ╚═╝  ╚═════╝  ╚══════╝        ╚═╝      ╚══════╝    ╚═╝     ╚═════╝ ╚═╝  ╚═╝
 """)
 
     print(f"v{VERSION} | {VERSION_DATE}")
     print("Developed by w1nter1226 on GitHub")
     print("https://github.com/w1nter1226/cros-fetch")
+    print("Patched by bashberryy on GitHub")
     print()
 
     if not os.path.exists(DATABASE):
@@ -108,11 +109,11 @@ while True:
 
     elif choice == "F":
 
-        print("WIP!!!")
+        print("Work in progress!!!")
 
     elif choice == "D":
 
-        print("\nDeleting downloaded reco images and shims...")
+        print("\nDeleting downloaded reco images and shims... please wait a moment...")
         delete_downloads()
         pause()
 
@@ -125,6 +126,7 @@ while True:
         print("RMA shims from dl.cros.download")
         print("SH1mmer & Badsh1mmer from Crosbreaker")
         print("Cr3nroll from CrOSmium")
+        print("With patches by bashberryy")
 
         pause()
 
@@ -135,5 +137,5 @@ while True:
 
     else:
 
-        print(f"\n'{choice}' is not a valid option.")
+        print(f"\n'{choice}' is not a valid option!! Please try again.")
         pause()
